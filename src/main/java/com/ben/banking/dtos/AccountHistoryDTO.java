@@ -10,5 +10,6 @@ public class AccountHistoryDTO {
     private double balance;
     private int totalPages;
     private int pageSize;
+    private int currentPage;
     private List<AccountOperationDTO> accountOperationDTOS;
 }
