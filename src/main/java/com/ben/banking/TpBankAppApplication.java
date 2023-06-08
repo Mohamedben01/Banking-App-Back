@@ -55,9 +55,9 @@ public class TpBankAppApplication {
 						accountService.credit(accountId,10000+Math.random()*120000,"Credit");
 						accountService.debit(accountId,1000+Math.random()*9000,"Debit");
 					} catch (BankAccountNotFoundException e) {
-						throw new RuntimeException(e);
+						e.printStackTrace();
 					} catch (BalanceNotSufficientException e) {
-						throw new RuntimeException(e);
+						e.printStackTrace();
 					}
 				}
 			});
