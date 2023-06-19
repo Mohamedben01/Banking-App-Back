@@ -5,6 +5,8 @@ import com.ben.banking.exceptions.CustomerNotFoundException;
 import com.ben.banking.services.BankAccountService;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -17,12 +19,14 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
+@CrossOrigin(origins = "*")
 @AllArgsConstructor
 @Slf4j
 @RequestMapping("/customers")
 public class CustomerRestController {
     private final BankAccountService bankAccountService;
     @GetMapping
+    @PreAuthorize("hasRole('ROLE_MANAGER')")
     public List<CustomerDTO> customers(){
         return bankAccountService.listCustomers();
     }
