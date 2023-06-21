@@ -1,0 +1,17 @@
+
+spring:
+  application:
+    name: springboot-keycloak
+
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          issuer-uri: http://localhost:8180/auth/realms/Bank
+          jwk-set-uri: ${spring.security.oauth2.resourceserver.jwt.issuer-uri}/protocol/openid-connect/certs
+
+jwt:
+  auth:
+    converter:
+      resource-id: bank-back
+      principle-attribute: preferred_username
