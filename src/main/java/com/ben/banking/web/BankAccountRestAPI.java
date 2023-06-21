@@ -16,25 +16,28 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/accounts")
-@PreAuthorize("hasRole('ROLE_ADMIN')")
 public class BankAccountRestAPI {
     private BankAccountService bankAccountService;
     public BankAccountRestAPI(BankAccountService bankAccountService) {
         this.bankAccountService = bankAccountService;
     }
     @GetMapping("/{accountId}")
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     public BankAccountDTO getBankAccount(@PathVariable(name = "accountId") String accountId) throws BankAccountNotFoundException {
         return bankAccountService.getBankAccount(accountId);
     }
     @GetMapping
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     public List<BankAccountDTO> listAccounts() {
         return bankAccountService.bankAccountList();
     }
     @GetMapping("/{accountId}/operations")
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     public List<AccountOperationDTO> getHistory(@PathVariable String accountId) {
         return bankAccountService.accountHistory(accountId);
     }
     @GetMapping("/{accountId}/pageOperations")
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     public AccountHistoryDTO getAccountHistory(
             @PathVariable String accountId,
             @RequestParam(name = "page", defaultValue = "0") int page,
