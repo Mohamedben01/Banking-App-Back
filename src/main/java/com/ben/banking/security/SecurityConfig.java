@@ -20,11 +20,20 @@ import org.springframework.web.filter.CorsFilter;
 @RequiredArgsConstructor
 public class SecurityConfig {
     private final JwtAuthConverter jwtAuthConverter;
+    private static final String[] SWAGGER_WHITELIST = {
+            "/api/v3/api-docs/**",
+            "/api/swagger-ui/**",
+            "/api/swagger-ui-custom.html"
+    };
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http.csrf(csrf -> csrf.disable());
         http.addFilter(corsFilter().getFilter());
-        http.authorizeHttpRequests(auth -> auth.anyRequest().authenticated());
+        http.authorizeHttpRequests(auth -> {
+            auth
+                    .requestMatchers(SWAGGER_WHITELIST).permitAll()
+                    .anyRequest().authenticated();
+        });
         http.oauth2ResourceServer(oauth2 ->
                 oauth2.jwt(jwt -> jwt.jwtAuthenticationConverter(jwtAuthConverter)));
         http.sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS));

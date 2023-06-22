@@ -17,10 +17,10 @@ import java.util.List;
 import java.util.stream.Stream;
 
 @SpringBootApplication
-public class TpBankAppApplication {
+public class BankAppApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(TpBankAppApplication.class, args);
+		SpringApplication.run(BankAppApplication.class, args);
 	}
 
 	@Bean

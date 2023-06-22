@@ -9,9 +9,9 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.ben</groupId>
-	<artifactId>TP-Bank-App</artifactId>
+	<artifactId>Bank-App</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>TP-Bank-App</name>
+	<name>Bank-App</name>
 	<description>Banking project for Spring Boot and Angular</description>
 	<properties>
 		<java.version>17</java.version>
@@ -74,6 +74,7 @@
 				</configuration>
 			</plugin>
 		</plugins>
+		<finalName>bank-back-app</finalName>
 	</build>
 
 </project>
