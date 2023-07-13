@@ -33,4 +33,4 @@ build/
 .vscode/
 
 ### Specific files ###
-/src/main/resources/text.txt
+!**/src/main/resources/text.txt
