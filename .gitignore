@@ -31,3 +31,6 @@ build/
 
 ### VS Code ###
 .vscode/
+
+### Specific files ###
+/src/main/resources/text.txt
